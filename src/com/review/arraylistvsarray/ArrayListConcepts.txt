@@ -1,0 +1,15 @@
+For below, review by (Collections, from scratch impl, Big O)
+
+Creating ArrayLists
+
+Insert elements: add(atIndex), add() <- adds to end
+
+Removing elements: remove(atIndex)
+
+Retrieving elements: get(atIndex)
+
+ArrayList size()
+
+Iterating over ArrayList
+
+

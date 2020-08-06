@@ -1,0 +1,11 @@
+Topics ( Java Collections, from scratch impl, Big O)
+
+Create an array
+
+Set and access elements
+
+Iterate over elements
+
+Create an array of objects
+
+Call method for array elements
