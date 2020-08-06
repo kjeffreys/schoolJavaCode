@@ -1,4 +1,4 @@
-package com.mygame;
+package com.review.datastructuresfromscratch;
 
 public class MyLinkedList {
     private Node first;

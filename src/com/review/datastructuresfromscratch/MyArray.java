@@ -1,6 +1,4 @@
-package com.mygame;
-
-import java.util.Arrays;
+package com.review.datastructuresfromscratch;
 
 public class MyArray {
     private Object[] elements;
@@ -56,5 +54,16 @@ public class MyArray {
         }
         return mA;
     } // end initSampleArray()
+
+    public static void main(String[] args) {
+        MyArray arr = MyArray.initSampleArray("int");
+        MyArray arr2 = MyArray.initSampleArray("str");
+
+        System.out.println("Integer Array");
+        System.out.println(arr);
+        System.out.println("\nString Array");
+        System.out.println(arr2);
+
+    }
 
 } // end MyArray.java
