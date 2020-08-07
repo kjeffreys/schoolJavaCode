@@ -1,0 +1,7 @@
+Describe / contrast sorting algorithms
+(Bubble, Selection, Insertion, Merge, Quick, Radix)
+
+Describe complexity
+( O(n^2) for B,S,I...O(n) for M,Q...Radix? )
+
+Trace sorting algorithms on paper and with program output
