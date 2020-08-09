@@ -24,4 +24,4 @@ hs_err_pid*
 
 .idea
 *.iml
-/out/production/myGameDev/META-INF/myGameDev.kotlin_module
+/out/
