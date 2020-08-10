@@ -4,7 +4,7 @@ public class SortTester {
     public static void main(String[] args) {
         int unsorted[] = { 8,3,6,2,9,1,5 };
 
-        //InsertionSort.insertionSort(unsorted);
+        InsertionSort.insertionSort(unsorted);
 
 
     }
