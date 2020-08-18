@@ -1,7 +1,7 @@
 package com.review.datastructuresfromscratch;
 
 public class MyArray {
-    private Object[] elements;
+    private final Object[] elements;
     private int count;
 
     public MyArray (int length) {

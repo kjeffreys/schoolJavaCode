@@ -4,7 +4,7 @@ import javax.sound.midi.SysexMessage;
 
 public class Quicksort {
 
-    private int[] arr;
+    private final int[] arr;
 
     public Quicksort(int[] arr) {
         this.arr = arr;

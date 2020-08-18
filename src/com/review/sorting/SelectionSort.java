@@ -3,7 +3,7 @@ package com.review.sorting;
 public class SelectionSort {
 
     public static void main(String[] args) {
-        int unsorted[] = { 12, 5, 2, 27, 8 };
+        int[] unsorted = { 12, 5, 2, 27, 8 };
 
         System.out.println("Unsorted");
         printArray(unsorted);
@@ -30,7 +30,7 @@ public class SelectionSort {
         printArray(unsorted);
     }
 
-    public static void printArray(int nums[]) {
+    public static void printArray(int[] nums) {
         for(int i = 0; i < nums.length; i++) {
             System.out.print("\t" + i);
         }

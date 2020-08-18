@@ -36,8 +36,8 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-        int unsorted[] = {10,30,20,100,50,80};
-        int sorted[] = {10,20,30,40,50,60,70,80};
+        int[] unsorted = {10,30,20,100,50,80};
+        int[] sorted = {10,20,30,40,50,60,70,80};
 
         int place = 0;
         place = linearSearch(unsorted, 50);

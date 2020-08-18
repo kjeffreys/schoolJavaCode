@@ -11,8 +11,8 @@ Compare to compareJavaPython.py impl in pythonKit/oop/
  */
 public class BankAccount {
     private double balance;
-    private String accountNum;
-    private String customerName;
+    private final String accountNum;
+    private final String customerName;
 
     public BankAccount(String accNo, String cName, double bal) {
         accountNum = accNo;
@@ -21,8 +21,7 @@ public class BankAccount {
     }
 
     public String toString() {
-        String ret = accountNum + " (" + customerName + "): " + balance;
-        return ret;
+        return accountNum + " (" + customerName + "): " + balance;
     }
 
     public double getBalance() {
