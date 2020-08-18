@@ -1,9 +1,15 @@
 package com.review.datastructuresfromscratch;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.NoSuchElementException;
+import java.util.Arrays;
+
 
 public class MyLinkedList implements List {
-    private Node first;
+    // protected for use with external Node impl in same package
+    protected Node first;
 
     public MyLinkedList() {
         first = null;
@@ -72,15 +78,6 @@ public class MyLinkedList implements List {
         return false;
     }
 
-    /**
-     * Returns an iterator over the elements in this list in proper sequence.
-     *
-     * @return an iterator over the elements in this list in proper sequence
-     */
-    @Override
-    public Iterator iterator() {
-        return null;
-    }
 
     /**
      * Returns an array containing all of the elements in this list in proper
@@ -153,6 +150,29 @@ public class MyLinkedList implements List {
      */
     @Override
     public boolean remove(Object o) {
+        return false;
+    }
+
+    /**
+     * Returns {@code true} if this list contains all of the elements of the
+     * specified collection.
+     *
+     * @param c collection to be checked for containment in this list
+     * @return {@code true} if this list contains all of the elements of the
+     * specified collection
+     * @throws ClassCastException   if the types of one or more elements
+     *                              in the specified collection are incompatible with this
+     *                              list
+     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws NullPointerException if the specified collection contains one
+     *                              or more null elements and this list does not permit null
+     *                              elements
+     *                              (<a href="Collection.html#optional-restrictions">optional</a>),
+     *                              or if the specified collection is null
+     * @see #contains(Object)
+     */
+    @Override
+    public boolean containsAll(Collection c) {
         return false;
     }
 
@@ -357,7 +377,7 @@ public class MyLinkedList implements List {
      */
     @Override
     public ListIterator listIterator() {
-        return null;
+        return new MyLinkedListIterator();
     }
 
     /**
@@ -485,52 +505,186 @@ public class MyLinkedList implements List {
      *                              or if the specified collection is null
      * @see #contains(Object)
      */
-    @Override
-    public boolean containsAll(Collection c) {
-        return false;
-    }
 
-    /**
-     * Returns an array containing all of the elements in this list in
-     * proper sequence (from first to last element); the runtime type of
-     * the returned array is that of the specified array.  If the list fits
-     * in the specified array, it is returned therein.  Otherwise, a new
-     * array is allocated with the runtime type of the specified array and
-     * the size of this list.
-     *
-     * <p>If the list fits in the specified array with room to spare (i.e.,
-     * the array has more elements than the list), the element in the array
-     * immediately following the end of the list is set to {@code null}.
-     * (This is useful in determining the length of the list <i>only</i> if
-     * the caller knows that the list does not contain any null elements.)
-     *
-     * <p>Like the {@link #toArray()} method, this method acts as bridge between
-     * array-based and collection-based APIs.  Further, this method allows
-     * precise control over the runtime type of the output array, and may,
-     * under certain circumstances, be used to save allocation costs.
-     *
-     * <p>Suppose {@code x} is a list known to contain only strings.
-     * The following code can be used to dump the list into a newly
-     * allocated array of {@code String}:
-     *
-     * <pre>{@code
-     *     String[] y = x.toArray(new String[0]);
-     * }</pre>
-     * <p>
-     * Note that {@code toArray(new Object[0])} is identical in function to
-     * {@code toArray()}.
-     *
-     * @param a the array into which the elements of this list are to
-     *          be stored, if it is big enough; otherwise, a new array of the
-     *          same runtime type is allocated for this purpose.
-     * @return an array containing the elements of this list
-     * @throws ArrayStoreException  if the runtime type of the specified array
-     *                              is not a supertype of the runtime type of every element in
-     *                              this list
-     * @throws NullPointerException if the specified array is null
-     */
     @Override
     public Object[] toArray(Object[] a) {
         return new Object[0];
+    }
+
+    private class MyLinkedListIterator implements ListIterator {
+        private Node curr;
+        private Node prev;
+
+        public MyLinkedListIterator() {
+            curr = null;
+            prev = null;
+        }
+
+        /**
+         * Returns {@code true} if this list iterator has more elements when
+         * traversing the list in the forward direction. (In other words,
+         * returns {@code true} if {@link #next} would return an element rather
+         * than throwing an exception.)
+         *
+         * @return {@code true} if the list iterator has more elements when
+         * traversing the list in the forward direction
+         */
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        /**
+         * Returns the next element in the list and advances the cursor position.
+         * This method may be called repeatedly to iterate through the list,
+         * or intermixed with calls to {@link #previous} to go back and forth.
+         * (Note that alternating calls to {@code next} and {@code previous}
+         * will return the same element repeatedly.)
+         *
+         * @return the next element in the list
+         * @throws NoSuchElementException if the iteration has no next element
+         */
+        @Override
+        public Object next() {
+            if(!hasNext())
+                throw new NoSuchElementException();
+            prev = curr;
+
+            if(curr == null) {
+                curr = first;
+            }
+            else {
+                curr = curr.next;
+            }
+            return curr.data;
+        }
+
+        /**
+         * Returns {@code true} if this list iterator has more elements when
+         * traversing the list in the reverse direction.  (In other words,
+         * returns {@code true} if {@link #previous} would return an element
+         * rather than throwing an exception.)
+         *
+         * @return {@code true} if the list iterator has more elements when
+         * traversing the list in the reverse direction
+         */
+        @Override
+        public boolean hasPrevious() {
+            return false;
+        }
+
+        /**
+         * Returns the previous element in the list and moves the cursor
+         * position backwards.  This method may be called repeatedly to
+         * iterate through the list backwards, or intermixed with calls to
+         * {@link #next} to go back and forth.  (Note that alternating calls
+         * to {@code next} and {@code previous} will return the same
+         * element repeatedly.)
+         *
+         * @return the previous element in the list
+         * @throws NoSuchElementException if the iteration has no previous
+         *                                element
+         */
+        @Override
+        public Object previous() {
+            return null;
+        }
+
+        /**
+         * Returns the index of the element that would be returned by a
+         * subsequent call to {@link #next}. (Returns list size if the list
+         * iterator is at the end of the list.)
+         *
+         * @return the index of the element that would be returned by a
+         * subsequent call to {@code next}, or list size if the list
+         * iterator is at the end of the list
+         */
+        @Override
+        public int nextIndex() {
+            return 0;
+        }
+
+        /**
+         * Returns the index of the element that would be returned by a
+         * subsequent call to {@link #previous}. (Returns -1 if the list
+         * iterator is at the beginning of the list.)
+         *
+         * @return the index of the element that would be returned by a
+         * subsequent call to {@code previous}, or -1 if the list
+         * iterator is at the beginning of the list
+         */
+        @Override
+        public int previousIndex() {
+            return 0;
+        }
+
+        /**
+         * Removes from the list the last element that was returned by {@link
+         * #next} or {@link #previous} (optional operation).  This call can
+         * only be made once per call to {@code next} or {@code previous}.
+         * It can be made only if {@link #add} has not been
+         * called after the last call to {@code next} or {@code previous}.
+         *
+         * @throws UnsupportedOperationException if the {@code remove}
+         *                                       operation is not supported by this list iterator
+         * @throws IllegalStateException         if neither {@code next} nor
+         *                                       {@code previous} have been called, or {@code remove} or
+         *                                       {@code add} have been called after the last call to
+         *                                       {@code next} or {@code previous}
+         */
+        @Override
+        public void remove() {
+
+        }
+
+        /**
+         * Replaces the last element returned by {@link #next} or
+         * {@link #previous} with the specified element (optional operation).
+         * This call can be made only if neither {@link #remove} nor {@link
+         * #add} have been called after the last call to {@code next} or
+         * {@code previous}.
+         *
+         * @param o the element with which to replace the last element returned by
+         *          {@code next} or {@code previous}
+         * @throws UnsupportedOperationException if the {@code set} operation
+         *                                       is not supported by this list iterator
+         * @throws ClassCastException            if the class of the specified element
+         *                                       prevents it from being added to this list
+         * @throws IllegalArgumentException      if some aspect of the specified
+         *                                       element prevents it from being added to this list
+         * @throws IllegalStateException         if neither {@code next} nor
+         *                                       {@code previous} have been called, or {@code remove} or
+         *                                       {@code add} have been called after the last call to
+         *                                       {@code next} or {@code previous}
+         */
+        @Override
+        public void set(Object o) {
+
+        }
+
+        /**
+         * Inserts the specified element into the list (optional operation).
+         * The element is inserted immediately before the element that
+         * would be returned by {@link #next}, if any, and after the element
+         * that would be returned by {@link #previous}, if any.  (If the
+         * list contains no elements, the new element becomes the sole element
+         * on the list.)  The new element is inserted before the implicit
+         * cursor: a subsequent call to {@code next} would be unaffected, and a
+         * subsequent call to {@code previous} would return the new element.
+         * (This call increases by one the value that would be returned by a
+         * call to {@code nextIndex} or {@code previousIndex}.)
+         *
+         * @param o the element to insert
+         * @throws UnsupportedOperationException if the {@code add} method is
+         *                                       not supported by this list iterator
+         * @throws ClassCastException            if the class of the specified element
+         *                                       prevents it from being added to this list
+         * @throws IllegalArgumentException      if some aspect of this element
+         *                                       prevents it from being added to this list
+         */
+        @Override
+        public void add(Object o) {
+
+        }
     }
 }
