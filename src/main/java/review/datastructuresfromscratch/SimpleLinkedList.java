@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
 public class SimpleLinkedList
 {
     private Node first;
+    private int size = 0;
 
     /**
      * Constructor for empty linked list.
@@ -42,6 +43,7 @@ public class SimpleLinkedList
         newNode.data = obj;
         newNode.next = first;
         first = newNode;
+        size++;
     }
 
     /**
@@ -56,6 +58,7 @@ public class SimpleLinkedList
         }
         Object obj = first.data;
         first = first.next;
+        size--;
         return obj;
     }
 
@@ -139,6 +142,7 @@ public class SimpleLinkedList
             }
 
             curr = prev;
+            size--;
         }
 
         public void set(Object obj)
@@ -165,6 +169,7 @@ public class SimpleLinkedList
                 curr.next = newNode;
             }
             prev = curr;
+            size++;
         }
     }
 
